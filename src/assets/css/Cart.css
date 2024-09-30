@@ -1,17 +1,18 @@
 .cart{
     position:fixed;
-    background-color: aquamarine;
-    top:0px;
-    left:0px;
-    height:100vh;
+    background-color: #ffda00;
+    
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+
+    box-sizing: border-box;
+    height:80vh;
+    max-width:90vw;
+    width : 800px;
     padding:25px;
-}
 
-.open-close{
-    background-color: brown;
-    color: white;
-    margin-right:25px;
-    padding:15px;
-    cursor:pointer;
-
+    overflow: scroll;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 40px;
 }

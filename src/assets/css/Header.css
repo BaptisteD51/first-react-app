@@ -1,10 +1,26 @@
-.banner{
+header{
+    border-bottom: black solid 5px;
+    background-color: #ffda00;
+}
+
+header .container{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: black solid 5px;
+    max-width: 1100px;
+    margin:auto;
 }
 
-.banner h1{
-    color:darkgreen;
+header h1{
+    color:#ff0200;
+}
+
+header .cart-icon{
+    background-color: #ff0200;
+    color: white;
+    margin-right:25px;
+    padding:10px 20px;
+    border-radius:10px;
+    border:solid brown 3px;
+    cursor:pointer;
 }

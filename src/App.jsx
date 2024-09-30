@@ -9,41 +9,50 @@ import "./assets/css/App.css"
 function App() {
     const savedCart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
     const [cart, updateCart] = useState(savedCart)
-    const [filter, updateFilter] = useState(false)
+    const [filter, updateFilter] = useState(
+        {
+            category: "all",
+            height: "all",
+            age: "all"
+        }
+    )
     const [footVisibility, changeFootVisibility] = useState(true)
     const [cartVisibility, updateCartVisibility] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
-    },[cart])
-    
+    }, [cart])
+
     return (
         <>
             <Header
                 cartVisibility={cartVisibility}
                 updateCartVisibility={updateCartVisibility}
             />
+            <section className="page">
+                <Categories
+                    filter={filter}
+                    updateFilter={updateFilter}
+                />
+                <Shoppinglist
+                    cart={cart}
+                    updateCart={updateCart}
+                    filter={filter}
+                    updateFilter={updateFilter}
+                />
+            </section>
             <Cart
                 cart={cart}
                 updateCart={updateCart}
                 cartVisibility={cartVisibility}
                 updateCartVisibility={updateCartVisibility}
             />
-            <Categories
-                filter={filter}
-                updateFilter={updateFilter}
-            />
-            <Shoppinglist
-                cart={cart}
-                updateCart={updateCart}
-                filter={filter}
-                updateFilter={updateFilter}
-            />
+
             {footVisibility ? (
                 <Footer footVisibility={footVisibility} changeFootVisibility={changeFootVisibility} />
-                ) : (
-                    <button onClick={() => changeFootVisibility(!footVisibility)}>Montrer le footer</button>
-                )
+            ) : (
+                <button onClick={() => changeFootVisibility(!footVisibility)}>Montrer le footer</button>
+            )
             }
         </>
     );

@@ -1,13 +1,15 @@
 import "../assets/css/Header.css";
-import Cart from "./Cart";
+import {ShoppingCart} from "react-feather";
 
-function Header({cartVisibility, updateCartVisibility}) {
+function Header({ cartVisibility, updateCartVisibility }) {
     const title = "Woufflenheim : véritable croquette alsacienne 🐕";
 
     return (
         <header className="banner">
-            <h1>{title}</h1>
-            <button className="open-close" onClick={() => updateCartVisibility(!cartVisibility)}>Panier</button>
+            <div className="container">
+                <h1>{title}</h1>
+                <button className="cart-icon" onClick={() => updateCartVisibility(!cartVisibility)}><ShoppingCart color="white" /></button>
+            </div>
         </header>
     );
 }
