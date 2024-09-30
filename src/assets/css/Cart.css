@@ -1,0 +1,17 @@
+.cart{
+    position:fixed;
+    background-color: aquamarine;
+    top:0px;
+    left:0px;
+    height:100vh;
+    padding:25px;
+}
+
+.open-close{
+    background-color: brown;
+    color: white;
+    margin-right:25px;
+    padding:15px;
+    cursor:pointer;
+
+}

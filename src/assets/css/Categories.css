@@ -1,19 +1,7 @@
 .categories{
-    display:flex;
-    margin: 20px 0px;
     background-color: lightgreen;
-    padding:5px;
-    align-items: center;
+    padding: 20px 5px;
+    margin-top:20px;
 }
 
-.category-list{
-    display:flex;
-    gap:35px;
-}
 
-.category-list li{
-    background-color: green;
-    list-style-type: none;
-    padding:10px;
-    border-radius:10px;
-}

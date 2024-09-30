@@ -1,0 +1,10 @@
+.banner{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: black solid 5px;
+}
+
+.banner h1{
+    color:darkgreen;
+}

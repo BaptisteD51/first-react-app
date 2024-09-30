@@ -1,78 +1,87 @@
-import monstera from "../assets/monstera.jpeg"
+import croquette from "../assets/croquette.jpg"
 
 export const plantList = [
 	{
-		name: 'monstera',
-		category: 'classique',
+		name: 'CaniVital+',
+		category: 'croquette',
 		id: '1ed',
 		isBestSale: true,
 		light: 2,
 		water: 3,
-		cover: monstera
+		cover: croquette,
+		price: 8
 	},
 	{
-		name: 'ficus lyrata',
-		category: 'classique',
+		name: 'CroqDélice Premium',
+		category: 'croquette',
 		id: '2ab',
 		light: 3,
 		water: 1,
-		cover: monstera
+		cover: croquette,
+		price: 13
 	},
 	{
-		name: 'pothos argenté',
-		category: 'classique',
+		name: 'DogNutrivor',
+		category: 'pâtée',
 		id: '3sd',
 		light: 1,
 		water: 2,
-		cover: monstera
+		cover: croquette,
+		price: 12
 	},
 	{
-		name: 'yucca',
-		category: 'classique',
+		name: 'Croc\'Chien Gourmet',
+		category: 'croquette',
 		id: '4kk',
 		light: 3,
 		water: 1,
-		cover: monstera
+		cover: croquette,
+		price: 16,
 	},
 	{
-		name: 'olivier',
-		category: 'extérieur',
+		name: 'WoofWellness',
+		category: 'pâtée',
 		id: '5pl',
 		light: 3,
 		water: 1,
-		cover: monstera
+		cover: croquette,
+		price: 9
 	},
 	{
-		name: 'géranium',
-		category: 'extérieur',
+		name: 'PuppyBoost Max',
+		category: 'croquette',
 		id: '6uo',
 		light: 2,
 		water: 2,
-		cover: monstera
+		cover: croquette,
+		price: 7
 	},
 	{
-		name: 'basilique',
-		category: 'extérieur',
+		name: 'ProCanin Supreme',
+		category: 'pâtée',
 		id: '7ie',
 		isBestSale: true,
 		light: 2,
 		water: 3,
-		cover: monstera
+		cover: croquette,
+		price: 21
 	},
 	{
-		name: 'aloe',
-		category: 'plante grasse',
+		name: 'HappyPaws Balance',
+		category: 'pâtée',
 		id: '8fp',
 		light: 2,
 		water: 1,
-		cover: monstera
+		cover: croquette,
+		price: 14
 	},
 	{
-		name: 'succulente',
-		category: 'plante grasse',
+		name: 'NutriPaw Excellence',
+		category: 'croquette',
 		id: '9vn',
 		light: 2,
 		water: 1,
-		cover: monstera
+		cover: croquette,
+		price: 11
 	}
 ]

@@ -1,0 +1,26 @@
+.popular{
+    color:red;
+    font-weight: bold;
+}
+
+.carescale{
+    cursor:pointer;
+}
+
+.price{
+    margin-top:0px;
+}
+
+.product h2{
+    margin-bottom:0px;
+}
+
+.product figure{
+    margin:0px;
+    overflow:hidden;
+}
+
+.product figure img{
+    max-width: 100%;
+}
+

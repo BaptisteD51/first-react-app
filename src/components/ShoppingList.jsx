@@ -1,24 +1,38 @@
 import { plantList } from "../data/plantList"
 import "../assets/css/ShoppingList.css"
 import CareScale from "./CareScale"
-import Plant from "./Plant"
-//import Form from "./Form"
+import Product from "./Product"
 
-function ShoppingList() {
+function ShoppingList({ cart, updateCart, filter, updateFilter }) {
+    let displayedPlants = plantList
+    console.log(typeof (filter))
+    if (filter) {
+        displayedPlants = plantList.filter(function (plant) {
+            return plant.category == filter
+        })
+    }
+
+
     return (
         <>
-            <ul className="product-list">
-                {plantList.map((plant) => (
-                    <Plant
-                        name={plant.name}
-                        id={plant.id}
-                        light={plant.light}
-                        water={plant.water}
-                        cover={plant.cover}
-                        isBestSale={plant.isBestSale}
-                    />
-                ))}
-            </ul>
+            <main>
+                <ul className="product-list">
+                    {displayedPlants.map((plant) => (
+                        <Product
+                            cart={cart}
+                            updateCart={updateCart}
+                            name={plant.name}
+                            id={plant.id}
+                            light={plant.light}
+                            water={plant.water}
+                            cover={plant.cover}
+                            isBestSale={plant.isBestSale}
+                            price={plant.price}
+                        />
+                    ))}
+                </ul>
+            </main>
+
         </>
     )
 }
