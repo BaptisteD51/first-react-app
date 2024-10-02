@@ -12,6 +12,8 @@ section.page{
     max-width: 1100px;
     gap:20px;
     box-shadow: 0px 0px 10px lightgray;
+    box-sizing: border-box;
+    padding-right: 20px;
 }
 
 aside{
@@ -21,4 +23,14 @@ aside{
 
 main{
     flex:4;
+    padding-bottom:50px;
+    padding-top: 50px;
+}
+
+.blur{
+    filter: blur(3px) grayscale(30%);
+}
+
+.no-scroll{
+    overflow-y: hidden;
 }

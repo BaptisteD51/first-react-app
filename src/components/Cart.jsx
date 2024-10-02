@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import "../assets/css/Cart.css"
+import {X} from "react-feather";
+
 
 function Cart({ cart, updateCart, cartVisibility, updateCartVisibility }) {
 
@@ -27,14 +29,26 @@ function Cart({ cart, updateCart, cartVisibility, updateCartVisibility }) {
 
     /* Update document.title with current total */
     useEffect(()=>{
-        document.title = "Plantes : " + total + " €"
+        document.title = `Produits : ${total} € | Woufflenheim`
     },[cart])
+
+    useEffect(()=>{
+        const visible = cartVisibility
+        let elmts = document.querySelectorAll("header, aside, main, footer")
+        if(visible){
+            elmts.forEach((elmt)=>elmt.classList.add("blur"))
+            document.body.classList.add("no-scroll")
+        }else{
+            elmts.forEach((elmt)=>elmt.classList.remove("blur"))
+            document.body.classList.remove("no-scroll")
+        }
+    },[cartVisibility])
 
     return <>
         {
             cartVisibility ? (
                 <div className="cart">
-                    <button className="x-mark" onClick={() => updateCartVisibility(!cartVisibility)}>X</button>
+                    <button className="x-mark" onClick={() => updateCartVisibility(!cartVisibility)}><X color="white"/></button>
                     <h2>Panier</h2>
                     <ul>
                         {cart.map((plant, index) => 

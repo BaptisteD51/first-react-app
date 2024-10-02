@@ -1,6 +1,7 @@
 import { products } from "../data/products";
 import "../assets/css/Categories.css"
 import { useState, useEffect } from "react";
+import { Filter } from "react-feather";
 
 function Categories({ filter, updateFilter }) {
     const categories = [];
@@ -45,6 +46,7 @@ function Categories({ filter, updateFilter }) {
     return (
         <aside className="categories" >
             <form onSubmit={selectFilters}>
+                <h2 className="filter-title"><Filter/><span>Filtres</span></h2>
                 <p>Type :&nbsp;
                     <select className="category-list" name="category">
                         <option value={"all"}>Tout</option>

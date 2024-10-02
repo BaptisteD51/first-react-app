@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import "../assets/css/Footer.css"
 
 
-function Footer({ footVisibility, changeFootVisibility }) {
+function Footer() {
 
     const [inputValue, setInputValue] = useState("")
 
@@ -14,20 +14,13 @@ function Footer({ footVisibility, changeFootVisibility }) {
         valid ? (e.target.value = "") : null
     }
 
-    useEffect(()=>{
-        return () => {
-            console.log("Composant footer retiré du DOM")
-        }
-    })
 
     return (
         <footer>
-            <><button onClick={() => changeFootVisibility(!footVisibility)}>Cacher le footer</button>
-                <div>
-                    <p><label htmlFor="email">Pour les passionée de plantes, envoyez nous votre email :</label></p>
-                    <input type="text" name="email" id="email" defaultValue={inputValue} onBlur={validate} />
-                </div>
-            </>
+            <div>
+                <p><label htmlFor="email">Pour les passionée de plantes, envoyez nous votre email :</label></p>
+                <input type="text" name="email" id="email" defaultValue={inputValue} onBlur={validate} />
+            </div>
         </footer>
     )
 

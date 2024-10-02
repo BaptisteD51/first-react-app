@@ -3,6 +3,8 @@ ul.product-list{
     flex-wrap: wrap;
     gap:40px;
     padding:0px;
+    justify-content: center;
+    margin:0px;
 }
 
 ul.product-list li{

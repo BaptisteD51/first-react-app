@@ -16,7 +16,6 @@ function App() {
             age: "all"
         }
     )
-    const [footVisibility, changeFootVisibility] = useState(true)
     const [cartVisibility, updateCartVisibility] = useState(false)
 
     useEffect(() => {
@@ -48,12 +47,10 @@ function App() {
                 updateCartVisibility={updateCartVisibility}
             />
 
-            {footVisibility ? (
-                <Footer footVisibility={footVisibility} changeFootVisibility={changeFootVisibility} />
-            ) : (
-                <button onClick={() => changeFootVisibility(!footVisibility)}>Montrer le footer</button>
-            )
-            }
+            
+            <Footer />
+            
+
         </>
     );
 }
