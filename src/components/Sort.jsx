@@ -12,6 +12,8 @@ function Sort({sorting,updateSorting}) {
                 <option value="none">Pas de tri</option>
                 <option value="price-ascending">Prix croissant</option>
                 <option value="price-descending">Prix décroissant</option>
+                <option value="popularity">Popularité</option>
+                <option value="stars">Évaluations</option>
             </select>
         </>
     )

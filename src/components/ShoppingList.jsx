@@ -50,6 +50,26 @@ function ShoppingList({ cart, updateCart, filter, sorting }) {
         return products
     }
 
+    function sortByPopularity(products){
+        products.sort(function(a,b){
+            if( (a.isBestSale == true) && (b.isBestSale == true) ){
+                return 0
+            }else if( (a.isBestSale == true) && (b.isBestSale == false) ){
+                return -1
+            }else if( (a.isBestSale == false) && (b.isBestSale == true) ){
+                return 1
+            }
+        })
+        return products
+    }
+
+    function sortByEvaluation(products){
+        products.sort(function(a,b){
+            return b.stars - a.stars
+        })
+        return products
+    }
+
     switch(sorting){
         case "none":
             displayedProducts = filterProducts(products)
@@ -60,6 +80,11 @@ function ShoppingList({ cart, updateCart, filter, sorting }) {
         case "price-descending":
             displayedProducts = sortPriceDescending(displayedProducts)
             break
+        case "popularity":
+            displayedProducts = sortByPopularity(displayedProducts)
+            break
+        case "stars":
+            displayedProducts = sortByEvaluation(displayedProducts)
     }
 
     return (
@@ -77,6 +102,7 @@ function ShoppingList({ cart, updateCart, filter, sorting }) {
                         cover={product.cover}
                         isBestSale={product.isBestSale}
                         price={product.price}
+                        stars={product.stars}
                     />
                 ))}
             </ul>

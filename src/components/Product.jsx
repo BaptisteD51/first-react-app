@@ -2,8 +2,9 @@ import Age from "./Age"
 import "../assets/css/Product.css"
 import { useEffect } from "react"
 import Height from "./Height"
+import Stars from "./Stars"
 
-function Product({ cart, updateCart, name, cover, id, height, age, isBestSale, price }) {
+function Product({ cart, updateCart, name, cover, id, height, age, isBestSale, price, stars }) {
     function addToCart(name, price) {
         let inCartPlant = cart.find((plant) => plant.name == name)
         if (inCartPlant) {
@@ -24,7 +25,8 @@ function Product({ cart, updateCart, name, cover, id, height, age, isBestSale, p
             <p className="price">{price} €</p>
             <Age age={age} />
             <Height height={height} />
-            {isBestSale ? <p className="popular">POPULAR</p> : null}
+            <Stars stars={stars}/>
+            {isBestSale ? <p className="popular">Meilleures ventes !</p> : null}
             <button onClick={() => addToCart(name, price)}>Ajouter au panier</button>
         </li>
     )
