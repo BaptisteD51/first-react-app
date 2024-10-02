@@ -2,8 +2,9 @@ import { products } from "../data/products";
 import "../assets/css/Categories.css"
 import { useState, useEffect } from "react";
 import { Filter } from "react-feather";
+import Sort from "./Sort";
 
-function Categories({ filter, updateFilter }) {
+function Categories({ filter, updateFilter, sorting, updateSorting }) {
     const categories = [];
     products.forEach(function (product) {
         if (!categories.includes(product.category)) {
@@ -25,23 +26,15 @@ function Categories({ filter, updateFilter }) {
         }
     });
 
-    function selectCategory(e) {
-        let selectCat = e.target.value
-        selectCat != "false" ? updateFilter(selectCat) : updateFilter(false)
-    }
-
     function selectFilters(e){
         e.preventDefault()
         let data = new FormData(e.target)
-        console.log(data)
         updateFilter({
             category:data.get("category"),
             age:data.get("age"),
             height:data.get("height"),
         })
     }
-
-    useEffect(()=>console.log(filter),[filter])
 
     return (
         <aside className="categories" >
@@ -80,6 +73,7 @@ function Categories({ filter, updateFilter }) {
                 </p>
 
             </form>
+            <Sort sorting={sorting} updateSorting={updateSorting}/>
         </aside>
     );
 }

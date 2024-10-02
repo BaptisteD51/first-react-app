@@ -17,6 +17,7 @@ function App() {
         }
     )
     const [cartVisibility, updateCartVisibility] = useState(false)
+    const [sorting, updateSorting] = useState("none")
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
@@ -32,12 +33,14 @@ function App() {
                 <Categories
                     filter={filter}
                     updateFilter={updateFilter}
+                    sorting={sorting}
+                    updateSorting={updateSorting}
                 />
                 <Shoppinglist
                     cart={cart}
                     updateCart={updateCart}
                     filter={filter}
-                    updateFilter={updateFilter}
+                    sorting={sorting}
                 />
             </section>
             <Cart
