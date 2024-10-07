@@ -23,8 +23,6 @@ function App() {
         localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
 
-    useEffect(()=>console.log(cart),[cart])
-
     /**
      * 
      * @param {*} array 

@@ -1,5 +1,6 @@
 import croquette from "../assets/croquette.jpg"
 import patee from "../assets/patee.jpg"
+import friandise from "../assets/friandise.jpg"
 
 export const products = [
 	{
@@ -12,6 +13,17 @@ export const products = [
 		cover: croquette,
 		price: 8,
 		stars:4
+	},
+	{
+		name: 'Crocs Gourmets',
+		category: 'friandise',
+		id: '9zc',
+		isBestSale: false,
+		height: 'moyen',
+		age: 'adulte',
+		cover: friandise,
+		price: 16,
+		stars:5
 	},
 	{
 		name: 'CroqDélice Premium',
@@ -33,6 +45,17 @@ export const products = [
 		age: 'adulte',
 		cover: patee,
 		price: 12,
+		stars:5
+	},
+	{
+		name: 'Os Délices',
+		category: 'friandise',
+		id: '7hl',
+		isBestSale: true,
+		height: 'moyen',
+		age: 'adulte',
+		cover: friandise,
+		price: 11,
 		stars:5
 	},
 	{
@@ -67,6 +90,17 @@ export const products = [
 		cover: croquette,
 		price: 7,
 		stars:4
+	},
+	{
+		name: 'Snack’Wouf',
+		category: 'friandise',
+		id: '6fd',
+		isBestSale: false,
+		height: 'petit',
+		age: 'junior',
+		cover: friandise,
+		price: 9,
+		stars:3
 	},
 	{
 		name: 'ProCanin Supreme',

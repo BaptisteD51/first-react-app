@@ -11,3 +11,10 @@ ul.product-list li{
     list-style-type: none;
     max-width: 225px;
 }
+
+h2.page-title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}

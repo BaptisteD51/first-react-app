@@ -51,7 +51,7 @@ function Categories({ filter, updateFilter, sorting, updateSorting }) {
                 
                 <p>Âge :&nbsp;
                     <select className="category-list" name="age">
-                        <option value={"all"}>Tout</option>
+                        <option value="all">Tout</option>
                         <option value="junior">Junior</option>
                         <option value="adulte">Adulte</option>
                         <option value="senior">Senior</option>
