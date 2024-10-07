@@ -7,7 +7,7 @@ function Sort({sorting,updateSorting}) {
 
     return (
         <>
-            <h2 className="sort-title">Trier<ArrowUp/><ArrowDown/></h2>
+            <h2 className="sort-title"><span class="sorting-arrows"><ArrowUp/><ArrowDown/></span>Trier</h2>
             <select onChange={selectSorting}>
                 <option value="none">Pas de tri</option>
                 <option value="price-ascending">Prix croissant</option>

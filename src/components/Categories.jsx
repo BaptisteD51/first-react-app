@@ -69,7 +69,7 @@ function Categories({ filter, updateFilter, sorting, updateSorting }) {
                 </p>
 
                 <p>
-                    <input type="submit" value="Filtrer" />
+                    <input type="submit" value="Filtrer" className="cta-little"/>
                 </p>
 
             </form>

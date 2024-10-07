@@ -3,6 +3,7 @@ import "../assets/css/Product.css"
 import { useEffect } from "react"
 import Height from "./Height"
 import Stars from "./Stars"
+import {ShoppingCart} from "react-feather";
 
 function Product({ cart, updateCart, name, cover, id, height, age, isBestSale, price, stars, sortCart }) {
     function addToCart(name, price, cover) {
@@ -25,12 +26,12 @@ function Product({ cart, updateCart, name, cover, id, height, age, isBestSale, p
         <li key={id} className="product">
             <figure><img src={cover} alt={name} /></figure>
             <h2>{name.toUpperCase()}</h2>
-            <p className="price">{price} €</p>
+            <p className="price"><strong>{price} €</strong></p>
             <Age age={age} />
             <Height height={height} />
             <Stars stars={stars} name={name}/>
             {isBestSale ? <p className="popular">Meilleures ventes !</p> : null}
-            <button onClick={() => addToCart(name, price, cover)}>Ajouter au panier</button>
+            <p className="add-to-cart"><button className="cta" onClick={() => addToCart(name, price, cover)}><ShoppingCart size={20}/><span>&nbsp;Ajouter au panier</span></button></p>
         </li>
     )
 }

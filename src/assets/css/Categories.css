@@ -1,7 +1,5 @@
-aside form{
-    padding: 0px 10px 20px 10px;
-    max-width:1100px;
-    margin:auto;
+aside{
+    padding:0px 10px;
 }
 
 .filter-title{
@@ -12,5 +10,13 @@ aside form{
 
 h2.filter-title{
     margin-top: 50px;
+}
+
+.sorting-arrows svg:nth-child(2){
+    margin-left: -6px;
+}
+
+aside h2:nth-child(2){
+    margin-top:40px;
 }
 

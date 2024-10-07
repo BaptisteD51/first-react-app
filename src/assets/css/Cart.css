@@ -1,5 +1,6 @@
 .cart {
     position: fixed;
+    z-index:1;
     background-color: #ffda00;
 
     top: 50%;

@@ -16,6 +16,25 @@ section.page{
     padding-right: 20px;
 }
 
+@media screen and (max-width:450px) {
+    section.page{
+        flex-direction: column;
+    }
+
+    header .container{
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    section.page{
+        padding-right:0px
+    }
+
+    aside.categories{
+        padding-bottom:40px;
+    }
+}
+
 aside{
     background-color: #faf8f5;
     flex:1;
@@ -53,4 +72,14 @@ main{
     border-radius: 50px;
     border: maroon solid 3px;
     padding: 10px 20px;
+}
+
+.cta-little{
+    color:white;
+    background-color:#ff0200;
+    font-weight: bold;
+    cursor:pointer;
+    border-radius: 50px;
+    border: maroon solid 3px;
+    padding: 5px 10px;
 }
