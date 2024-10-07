@@ -11,9 +11,9 @@ function Footer() {
 
     return (
         <footer>
-            <div class="footer-container">
+            <div className="footer-container">
                 <p>© Woufflenheim {theYear()} - tous droits réservés </p>
-                <p class="description">
+                <p className="description">
                     <HelpCircle size={14}/> Ce site est un site de démonstration, vous pouvez 
                     consulter le code source ReactJS ici :&nbsp;
                         <a href="https://github.com/BaptisteD51/first-react-app">

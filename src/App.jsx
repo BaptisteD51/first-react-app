@@ -23,6 +23,24 @@ function App() {
         localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
 
+    useEffect(()=>console.log(cart),[cart])
+
+    /**
+     * 
+     * @param {*} array 
+     * @returns {array}
+     * 
+     * Sort the cart item so that they are always displayed in the same order after updateCart.
+     * In descending order.
+     */
+    function sortCart(array){
+        return array.sort(
+            (a,b)=>{
+                return b.price - a.price
+            }
+        )
+    }
+
     return (
         <>
             <Header
@@ -41,6 +59,7 @@ function App() {
                     updateCart={updateCart}
                     filter={filter}
                     sorting={sorting}
+                    sortCart={sortCart}
                 />
             </section>
             <Cart
@@ -48,6 +67,7 @@ function App() {
                 updateCart={updateCart}
                 cartVisibility={cartVisibility}
                 updateCartVisibility={updateCartVisibility}
+                sortCart={sortCart}
             />
 
             

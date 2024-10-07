@@ -4,7 +4,7 @@ import CareScale from "./Age"
 import Product from "./Product"
 import { useEffect } from "react"
 
-function ShoppingList({ cart, updateCart, filter, sorting }) {
+function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
     // Pour travailler sur une copie, sinon pointe toujours sur la même référence. Seuls les types primitifs sont copiés par valeur
     let displayedProducts = [...products]
     
@@ -103,6 +103,7 @@ function ShoppingList({ cart, updateCart, filter, sorting }) {
                         isBestSale={product.isBestSale}
                         price={product.price}
                         stars={product.stars}
+                        sortCart={sortCart}
                     />
                 ))}
             </ul>

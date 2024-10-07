@@ -34,3 +34,23 @@ main{
 .no-scroll{
     overflow-y: hidden;
 }
+
+.discreet-button{
+    color:#ff0200;
+    text-decoration: underline;
+    font-weight: bold;
+    background-color: unset;
+    border:unset;
+    cursor:pointer;
+    padding:0px;
+}
+
+.cta{
+    color:white;
+    background-color:#ff0200;
+    font-weight: bold;
+    cursor:pointer;
+    border-radius: 50px;
+    border: maroon solid 3px;
+    padding: 10px 20px;
+}

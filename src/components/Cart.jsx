@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
 import "../assets/css/Cart.css"
-import {X} from "react-feather";
+import {X} from "react-feather"
+import Quantity from "./Quantity"
 
 
-function Cart({ cart, updateCart, cartVisibility, updateCartVisibility }) {
-
-    const monsteraPrice = 8
+function Cart({ cart, updateCart, cartVisibility, updateCartVisibility, sortCart }) {
 
     function resetCart() {
         updateCart([])
@@ -29,7 +28,7 @@ function Cart({ cart, updateCart, cartVisibility, updateCartVisibility }) {
 
     /* Update document.title with current total */
     useEffect(()=>{
-        document.title = `Produits : ${total} € | Woufflenheim`
+        document.title = `Panier : ${total} € | Woufflenheim`
     },[cart])
 
     useEffect(()=>{
@@ -44,6 +43,10 @@ function Cart({ cart, updateCart, cartVisibility, updateCartVisibility }) {
         }
     },[cartVisibility])
 
+    function alertOrder(){
+        alert("Ce site est un site de démonstration. Les produits à vendre sont fictifs")
+    }
+
     return <>
         {
             cartVisibility ? (
@@ -53,15 +56,28 @@ function Cart({ cart, updateCart, cartVisibility, updateCartVisibility }) {
                     <ul>
                         {cart.map((plant, index) => 
                             <li key={plant.name + index}>
-                                <p>
-                                    {plant.name} x {plant.amount} = {plant.amount*plant.price} €&nbsp;
-                                    <button className="delete-item" onClick={()=>deleteProduct(plant.name)}> Supprimer </button>
-                                </p>
+                                <figure>
+                                    <img src={plant.cover} alt={plant.name} />
+                                </figure>
+                                <div>
+                                    <h3>{plant.name}</h3>
+                                    <p>Prix : {plant.price} €</p>
+                                    <Quantity amount={plant.amount} name={plant.name} cart={cart} updateCart={updateCart} sortCart={sortCart}/>
+                                    <p> Sous-total = {plant.amount*plant.price} €&nbsp;</p>
+                                    <p><button className="discreet-button" onClick={()=>deleteProduct(plant.name)}> Supprimer </button></p>
+                                </div>
                             </li>
                         )}
                     </ul>
-                    <h3> Total : {total} €</h3>
-                    <button onClick={resetCart}>Vider le Panier</button>
+                    <div className="total-order">
+                        <div>
+                            <p className="total-cart"> Total : {total} €</p>
+                            <button onClick={resetCart} className="discreet-button">Vider le Panier</button>
+                        </div>
+                        
+                        <button className="cta" onClick={alertOrder}>Commander</button>
+                    </div>
+                    
                 </div>
             ) : (
                 null
