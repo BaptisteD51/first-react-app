@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react"
 import "../assets/css/Footer.css"
+import { HelpCircle, GitHub} from "react-feather"
 
 
 function Footer() {
-
-    const [inputValue, setInputValue] = useState("")
-
-
-    function validate(e) {
-        const valid = e.target.value.includes("@")
-        alert(valid ? "Votre email a bien été enregistré" : "Veuillez entrer une adresse email valide")
-        setInputValue(valid ? "" : e.target.value)
-        valid ? (e.target.value = "") : null
+    function theYear(){
+        let date = new Date()
+        return date.getFullYear()
     }
-
 
     return (
         <footer>
-            <div>
-                <p><label htmlFor="email">Pour les passionée de plantes, envoyez nous votre email :</label></p>
-                <input type="text" name="email" id="email" defaultValue={inputValue} onBlur={validate} />
+            <div class="footer-container">
+                <p>© Woufflenheim {theYear()} - tous droits réservés </p>
+                <p class="description">
+                    <HelpCircle size={14}/> Ce site est un site de démonstration, vous pouvez 
+                    consulter le code source ReactJS ici :&nbsp;
+                        <a href="https://github.com/BaptisteD51/first-react-app">
+                            <GitHub size={14}/>Dépôt GitHub
+                        </a>
+                </p>
             </div>
         </footer>
     )
