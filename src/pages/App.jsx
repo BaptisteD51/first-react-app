@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import Header from "./components/Header.jsx";
-import Shoppinglist from "./components/ShoppingList.jsx";
-import Categories from "./components/Categories.jsx";
-import Footer from "./components/Footer.jsx";
-import Cart from "./components/Cart.jsx"
-import "./assets/css/App.css"
+import { useEffect, useState, useContext } from "react";
+import Shoppinglist from "../components/ShoppingList.jsx";
+import Categories from "../components/Categories.jsx";
+import Cart from "../components/Cart.jsx"
+import "../assets/css/App.css"
+import {CartVisibility} from "../contexts/CartVisibility.jsx"
 
 function App() {
     const savedCart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
@@ -16,12 +15,13 @@ function App() {
             age: "all"
         }
     )
-    const [cartVisibility, updateCartVisibility] = useState(false)
+    const {cartVisibility, toggleCartVisibility} = useContext(CartVisibility)
     const [sorting, updateSorting] = useState("none")
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
+
 
     /**
      * 
@@ -41,10 +41,6 @@ function App() {
 
     return (
         <>
-            <Header
-                cartVisibility={cartVisibility}
-                updateCartVisibility={updateCartVisibility}
-            />
             <section className="page">
                 <Categories
                     filter={filter}
@@ -64,13 +60,9 @@ function App() {
                 cart={cart}
                 updateCart={updateCart}
                 cartVisibility={cartVisibility}
-                updateCartVisibility={updateCartVisibility}
+                updateCartVisibility={toggleCartVisibility}
                 sortCart={sortCart}
-            />
-
-            
-            <Footer />
-            
+            />            
 
         </>
     );

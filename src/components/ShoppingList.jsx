@@ -33,8 +33,6 @@ function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
 
     displayedProducts = filterProducts(displayedProducts)
 
-
-
     // Sort products
     function sortPriceAscending(products) {
         products.sort(function (a, b) {
@@ -52,11 +50,11 @@ function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
 
     function sortByPopularity(products) {
         products.sort(function (a, b) {
-            if ((a.isBestSale == true) && (b.isBestSale == true)) {
+            if (a.isBestSale == true && b.isBestSale == true) {
                 return 0
-            } else if ((a.isBestSale == true) && (b.isBestSale == false)) {
+            } else if (a.isBestSale == true && b.isBestSale == false) {
                 return -1
-            } else if ((a.isBestSale == false) && (b.isBestSale == true)) {
+            } else if (a.isBestSale == false && b.isBestSale == true) {
                 return 1
             }
         })
@@ -88,34 +86,33 @@ function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
     }
 
     return (
-
         <main>
-            <h2 class="page-title">Nourriture pour chien</h2>
+            <h2 className="page-title">Nourriture pour chien</h2>
             <ul className="product-list">
-                {
-                    displayedProducts.length != 0 ? (
-                        displayedProducts.map((product) => (
-                            <Product
-                                cart={cart}
-                                updateCart={updateCart}
-                                name={product.name}
-                                id={product.id}
-                                height={product.height}
-                                age={product.age}
-                                cover={product.cover}
-                                isBestSale={product.isBestSale}
-                                price={product.price}
-                                stars={product.stars}
-                                sortCart={sortCart}
-                            />
-                        ))
-                    ) : (
-                        <p>Pas de produit à afficher pour les filtres sélectionnés</p>
-                    )
-                }
+                {displayedProducts.length != 0 ? (
+                    displayedProducts.map((product,index) => (
+                        <Product
+                            cart={cart}
+                            updateCart={updateCart}
+                            name={product.name}
+                            id={product.id}
+                            height={product.height}
+                            age={product.age}
+                            cover={product.cover}
+                            isBestSale={product.isBestSale}
+                            price={product.price}
+                            stars={product.stars}
+                            sortCart={sortCart}
+                            key={`${product.name}-${index}`}
+                        />
+                    ))
+                ) : (
+                    <p>
+                        Pas de produit à afficher pour les filtres sélectionnés
+                    </p>
+                )}
             </ul>
         </main>
-
     )
 }
 

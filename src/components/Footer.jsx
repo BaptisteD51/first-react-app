@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import "../assets/css/Footer.css"
 import { HelpCircle, GitHub} from "react-feather"
 

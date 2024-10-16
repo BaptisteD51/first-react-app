@@ -33,6 +33,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types":0 // I did not want to use PropTypes for the moment
     },
   },
 ]
