@@ -1,6 +1,10 @@
 import {Minus, Plus } from "react-feather"
+import { useContext } from "react"
+import { CartContent } from "../contexts/CartContent"
 
-function Quantity({amount,name,cart,updateCart,sortCart}){
+function Quantity({amount,name,cart,updateCart}){
+    const { sortCart } = useContext(CartContent)
+
     function changeAmount(amount,name,direction){
         let product = cart.find((product)=>product.name == name)
         let newCart = cart.filter((product)=>product.name != name)

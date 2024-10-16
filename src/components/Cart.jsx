@@ -1,20 +1,26 @@
-import { useEffect, useContext } from "react"
+import { useEffect, useContext, useState } from "react"
 import "../assets/css/Cart.css"
 import { X } from "react-feather"
 import Quantity from "./Quantity"
 import { CartVisibility } from "../contexts/CartVisibility"
+import { CartContent } from "../contexts/CartContent"
 
-function Cart({
-    cart,
-    updateCart,
-    sortCart,
-}) {
+function Cart() {
 
     const {cartVisibility, toggleCartVisibility} = useContext(CartVisibility)
+    const {cart,updateCart} = useContext(CartContent)
+    
 
     
 
-
+    /**
+     * 
+     * @param {*} array 
+     * @returns {array}
+     * 
+     * Sort the cart item so that they are always displayed in the same order after updateCart.
+     * In descending order.
+     */
 
     function resetCart() {
         updateCart([])
@@ -92,7 +98,6 @@ function Cart({
                                             name={plant.name}
                                             cart={cart}
                                             updateCart={updateCart}
-                                            sortCart={sortCart}
                                         />
                                         <p>
                                             {" "}

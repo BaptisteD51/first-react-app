@@ -2,9 +2,10 @@ import { products } from "../data/products.js"
 import "../assets/css/ShoppingList.css"
 import CareScale from "./Age"
 import Product from "./Product"
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
+import { CartContent } from "../contexts/CartContent.jsx"
 
-function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
+function ShoppingList({ filter, sorting }) {
     // Pour travailler sur une copie, sinon pointe toujours sur la même référence. Seuls les types primitifs sont copiés par valeur
     let displayedProducts = [...products]
 
@@ -90,10 +91,8 @@ function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
             <h2 className="page-title">Nourriture pour chien</h2>
             <ul className="product-list">
                 {displayedProducts.length != 0 ? (
-                    displayedProducts.map((product,index) => (
+                    displayedProducts.map((product, index) => (
                         <Product
-                            cart={cart}
-                            updateCart={updateCart}
                             name={product.name}
                             id={product.id}
                             height={product.height}
@@ -102,7 +101,6 @@ function ShoppingList({ cart, updateCart, filter, sorting, sortCart }) {
                             isBestSale={product.isBestSale}
                             price={product.price}
                             stars={product.stars}
-                            sortCart={sortCart}
                             key={`${product.name}-${index}`}
                         />
                     ))
