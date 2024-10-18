@@ -45,7 +45,7 @@ function Cart() {
     /* Update document.title with current total */
     useEffect(() => {
         document.title = `Panier : ${total} € | Woufflenheim`
-    }, [cart])
+    }, [total])
 
     useEffect(() => {
         const visible = cartVisibility

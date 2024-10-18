@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .button {
+        @apply bg-red-600 border-[3px] border-rose-900 p-3 rounded-full;
+    }
+
+    .wrapper {
+        @apply max-w-6xl m-auto px-4;
+    }
+}

@@ -1,13 +1,11 @@
 import { products } from "../data/products.js"
 import "../assets/css/ShoppingList.css"
-import CareScale from "./Age"
 import Product from "./Product"
-import { useEffect, useContext } from "react"
-import { CartContent } from "../contexts/CartContent.jsx"
 
-function ShoppingList({ filter, sorting }) {
+
+function ShoppingList({ filter, sorting, data, }) {
     // Pour travailler sur une copie, sinon pointe toujours sur la même référence. Seuls les types primitifs sont copiés par valeur
-    let displayedProducts = [...products]
+    let displayedProducts = [...data]
 
     // Filter products
     function filterProducts(products) {

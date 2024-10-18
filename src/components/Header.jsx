@@ -1,21 +1,54 @@
-import "../assets/css/Header.css";
-import {ShoppingCart} from "react-feather";
-import { useContext } from "react";
-import { CartVisibility } from "../contexts/CartVisibility";
+import { ShoppingCart } from "react-feather"
+import { useContext } from "react"
+import { CartVisibility } from "../contexts/CartVisibility"
+import { Link } from "react-router-dom"
 
 function Header() {
-    const title = "Woufflenheim : véritable croquette alsacienne 🐕";
-
-    const {toggleCartVisibility} = useContext(CartVisibility)
+    const { toggleCartVisibility } = useContext(CartVisibility)
 
     return (
-        <header className="banner">
-            <div className="container">
-                <h1>{title}</h1>
-                <button className="cart-icon" onClick={toggleCartVisibility}><ShoppingCart color="white" /></button>
-            </div>
-        </header>
-    );
+        <>
+            <header className="bg-yellow-400">
+                <div className="wrapper">
+                    <section className="flex justify-between items-center py-4">
+                        <p className="text-2xl">
+                            <Link to="/">
+                                Woufflenheim : véritable croquette alsacienne 🐕
+                            </Link>
+                        </p>
+                        <button
+                            className="button"
+                            onClick={toggleCartVisibility}
+                        >
+                            <ShoppingCart color="white" />
+                        </button>
+                    </section>
+                </div>
+            </header>
+
+            <section className="bg-gray-100">
+                <nav className="bg-gray-100 wrapper">
+                    <ul className="flex">
+                        <li>
+                            <Link to="/chien" className="text-red bg-blue-50">
+                                <p className="p-4 hover:bg-gray-50">Chien</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/chat">
+                            <p className="p-4 hover:bg-gray-50">Chat</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/rongeur">
+                                <p className="p-4 hover:bg-gray-50">Rongeur</p>
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </>
+    )
 }
 
-export default Header;
+export default Header

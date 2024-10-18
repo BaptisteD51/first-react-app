@@ -4,9 +4,9 @@ import friandise from "../assets/friandise.jpg"
 
 export const products = [
 	{
+        id: '1ed',
 		name: 'CaniVital+',
 		category: 'croquette',
-		id: '1ed',
 		isBestSale: true,
 		height: 'moyen',
 		age: 'senior',
