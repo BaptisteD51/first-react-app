@@ -5,8 +5,11 @@ import "../assets/css/App.css"
 import useFetch from "../hooks/useFetch.jsx"
 
 function Dogs() {
+    const hostName = window.location.hostname
+    const protocol = window.location.protocol
+
     const [data, dataLoaded, error] = useFetch(
-        "http://localhost/woufflenheim-api/?animal=dog"
+        `${protocol}//${hostName}/woufflenheim-api/?animal=dog`
     )
 
     const [filter, updateFilter] = useState({
@@ -29,6 +32,7 @@ function Dogs() {
                     updateFilter={updateFilter}
                     sorting={sorting}
                     updateSorting={updateSorting}
+                    data={data}
                 />
                 <Shoppinglist filter={filter} sorting={sorting} data={data}/>
             </section>

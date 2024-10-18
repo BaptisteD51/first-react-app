@@ -1,5 +1,3 @@
-import { products } from "../data/products.js"
-import "../assets/css/ShoppingList.css"
 import Product from "./Product"
 
 
@@ -69,7 +67,7 @@ function ShoppingList({ filter, sorting, data, }) {
 
     switch (sorting) {
         case "none":
-            displayedProducts = filterProducts(products)
+            displayedProducts = filterProducts(data)
             break
         case "price-ascending":
             displayedProducts = sortPriceAscending(displayedProducts)
@@ -86,8 +84,8 @@ function ShoppingList({ filter, sorting, data, }) {
 
     return (
         <main>
-            <h2 className="page-title">Nourriture pour chien</h2>
-            <ul className="product-list">
+            <h2 className="text-3xl text-center mb-12">Nourriture pour chien</h2>
+            <ul className="flex flex-wrap gap-10 justify-center">
                 {displayedProducts.length != 0 ? (
                     displayedProducts.map((product, index) => (
                         <Product

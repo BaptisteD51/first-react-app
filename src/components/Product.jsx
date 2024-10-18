@@ -1,6 +1,6 @@
 import Age from "./Age"
 import "../assets/css/Product.css"
-import { useEffect, useContext } from "react"
+import { useContext } from "react"
 import Height from "./Height"
 import Stars from "./Stars"
 import { ShoppingCart } from "react-feather"
@@ -46,12 +46,12 @@ function Product({
     }
 
     return (
-        <li key={id} className="product">
+        <li key={id} className="max-w-56 shadow-lg shadow-gray-500 rounded-2xl">
             <figure>
                 <img src={cover} alt={name} />
             </figure>
             <h2>{name.toUpperCase()}</h2>
-            <p className="price">
+            <p>
                 <strong>{price} €</strong>
             </p>
             <Age age={age} />

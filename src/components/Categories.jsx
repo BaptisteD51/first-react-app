@@ -1,26 +1,26 @@
-import { products } from "../data/products"
 import "../assets/css/Categories.css"
 import { useState, useEffect } from "react"
 import { Filter } from "react-feather"
 import Sort from "./Sort"
+import useFetch from "../hooks/useFetch"
 
-function Categories({ filter, updateFilter, sorting, updateSorting }) {
+function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
     const categories = []
-    products.forEach(function (product) {
+    data.forEach(function (product) {
         if (!categories.includes(product.category)) {
             categories.push(product.category)
         }
     })
 
     const heights = []
-    products.forEach(function (product) {
+    data.forEach(function (product) {
         if (!heights.includes(product.height)) {
             heights.push(product.height)
         }
     })
 
     const ages = []
-    products.forEach(function (product) {
+    data.forEach(function (product) {
         if (!ages.includes(product.age)) {
             ages.push(product.age)
         }
