@@ -1,30 +1,36 @@
-import "../assets/css/Categories.css"
 import { useState, useEffect } from "react"
-import { Filter } from "react-feather"
-import Sort from "./Sort"
-import useFetch from "../hooks/useFetch"
+import Sort from "./categories-parts/Sort"
+import Filter from "./categories-parts/Filter"
 
 function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
-    const categories = []
-    data.forEach(function (product) {
-        if (!categories.includes(product.category)) {
-            categories.push(product.category)
-        }
-    })
+    /**
+     * 
+     * @param {*} data 
+     * @returns Object
+     * 
+     * Return an object containing all the categories of products with their possible values
+     */
+    function getCategories(data){
+        const catNames = Object.getOwnPropertyNames(data[0].filters)
+        let allCats = {}
+        
+        catNames.forEach((catName)=>{
+            allCats[catName] = []
+        })
 
-    const heights = []
-    data.forEach(function (product) {
-        if (!heights.includes(product.height)) {
-            heights.push(product.height)
-        }
-    })
+        data.forEach((product)=>{
+            let filters = product.filters
+            for(let key in filters){
+                if (!allCats[key].includes(filters[key])){
+                    allCats[key].push(filters[key])
+                }
+            }
+        })
 
-    const ages = []
-    data.forEach(function (product) {
-        if (!ages.includes(product.age)) {
-            ages.push(product.age)
-        }
-    })
+        return allCats
+    }
+    
+    let categories = getCategories(data)
 
     function selectFilters(e) {
         e.preventDefault()
@@ -36,9 +42,10 @@ function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
         })
     }
 
+
     return (
         <aside className="categories">
-            <form onSubmit={selectFilters}>
+            {/* <form onSubmit={selectFilters}>
                 <h2 className="filter-title">
                     <Filter />
                     <span>Filtres</span>
@@ -60,7 +67,7 @@ function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
                     <select className="category-list" name="age">
                         <option value="all">Tout</option>
                         <option value="junior">Junior</option>
-                        <option value="adulte">Adulte</option>
+                        <option value="adult">Adulte</option>
                         <option value="senior">Senior</option>
                     </select>
                 </p>
@@ -69,9 +76,9 @@ function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
                     Taille :&nbsp;
                     <select className="category-list" name="height">
                         <option value={"all"}>Tout</option>
-                        <option value={"petit"}>Petit</option>
-                        <option value={"moyen"}>Moyen</option>
-                        <option value={"grand"}>Grand</option>
+                        <option value={"small"}>Petit</option>
+                        <option value={"medium"}>Moyen</option>
+                        <option value={"big"}>Grand</option>
                     </select>
                 </p>
 
@@ -82,7 +89,14 @@ function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
                         className="cta-little"
                     />
                 </p>
+            </form> */}
+            <form>
+                <h2>Filtrer</h2>
+                { Object.entries(categories).map(([key,value])=>(
+                <Filter catName={key} catValues={value} key={`category-${key}`}/>
+            )) }
             </form>
+            
             <Sort sorting={sorting} updateSorting={updateSorting} />
         </aside>
     )

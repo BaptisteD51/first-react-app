@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp } from "react-feather"
+import { Icon } from '@iconify/react';
 
 function Sort({sorting,updateSorting}) {
     function selectSorting(e){
@@ -7,7 +7,7 @@ function Sort({sorting,updateSorting}) {
 
     return (
         <>
-            <h2 className="sort-title"><span class="sorting-arrows"><ArrowUp/><ArrowDown/></span>Trier</h2>
+            <h2 className="sort-title"><span className="sorting-arrows"><Icon icon="mi:sort"/></span>Trier</h2>
             <select onChange={selectSorting}>
                 <option value="none">Pas de tri</option>
                 <option value="price-ascending">Prix croissant</option>

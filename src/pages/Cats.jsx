@@ -1,16 +1,14 @@
+import useFetch from "../hooks/useFetch"
+import ShoppingList from "../components/ShoppingList"
+import Categories from "../components/Categories"
 import { useState } from "react"
-import ShoppingList from "../components/ShoppingList.jsx"
-import Categories from "../components/Categories.jsx"
-import "../assets/css/App.css"
-import useFetch from "../hooks/useFetch.jsx"
-import ProductPageLayout from "../components/ProductPageLayout.jsx"
+import ProductPageLayout from "../components/ProductPageLayout"
 
-function Dogs() {
+function Cats() {
     const hostName = window.location.hostname
     const protocol = window.location.protocol
-
     const [data, dataLoaded, error] = useFetch(
-        `${protocol}//${hostName}/woufflenheim-api/?animal=dog`
+        `${protocol}//${hostName}/woufflenheim-api/?animal=cat`
     )
 
     const [filter, updateFilter] = useState({
@@ -18,6 +16,7 @@ function Dogs() {
         height: "all",
         age: "all",
     })
+
     const [sorting, updateSorting] = useState("none")
 
     if (error) {
@@ -44,7 +43,7 @@ function Dogs() {
                             data={data}
                         />
                     }
-                    pageTitle={"Nourriture pour chien"}
+                    pageTitle={"Nourriture pour chat"}
                 />
             ) : (
                 <p>Chargement des données</p>
@@ -53,4 +52,4 @@ function Dogs() {
     )
 }
 
-export default Dogs
+export default Cats

@@ -1,22 +1,10 @@
-import Age from "./Age"
-import "../assets/css/Product.css"
 import { useContext } from "react"
-import Height from "./Height"
-import Stars from "./Stars"
+import Stars from "./product-parts/Stars.jsx"
 import { ShoppingCart } from "react-feather"
 import { CartContent } from "../contexts/CartContent.jsx"
 
-function Product({
-    name,
-    cover,
-    id,
-    height,
-    age,
-    isBestSale,
-    price,
-    stars,
-}) {
-    const { cart, updateCart,sortCart } = useContext(CartContent)
+function Product({ children, name, cover, id, isBestSale, price, stars }) {
+    const { cart, updateCart, sortCart } = useContext(CartContent)
 
     function addToCart(name, price, cover) {
         let inCartPlant = cart.find((plant) => plant.name == name)
@@ -46,7 +34,10 @@ function Product({
     }
 
     return (
-        <li key={id} className="max-w-56 shadow-lg shadow-gray-500 rounded-2xl">
+        <li
+            key={id}
+            className="max-w-56 shadow-lg shadow-gray-500 p-4 rounded-2xl"
+        >
             <figure>
                 <img src={cover} alt={name} />
             </figure>
@@ -54,13 +45,12 @@ function Product({
             <p>
                 <strong>{price} €</strong>
             </p>
-            <Age age={age} />
-            <Height height={height} />
+            {children}
             <Stars stars={stars} name={name} />
             {isBestSale ? <p className="popular">Meilleures ventes !</p> : null}
             <p className="add-to-cart">
                 <button
-                    className="cta"
+                    className="button flex"
                     onClick={() => addToCart(name, price, cover)}
                 >
                     <ShoppingCart size={20} />

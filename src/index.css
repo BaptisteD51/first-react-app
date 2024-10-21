@@ -4,10 +4,14 @@
 
 @layer base {
     .button {
-        @apply bg-red-600 border-[3px] border-rose-900 p-3 rounded-full;
+        @apply bg-red-600 border-[3px] border-rose-900 p-3 rounded-full text-white;
     }
 
     .wrapper {
         @apply max-w-6xl m-auto px-4;
+    }
+
+    .product-page-title{
+        @apply text-3xl text-center mb-12;
     }
 }

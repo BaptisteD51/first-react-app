@@ -4,7 +4,7 @@ function Stars({ stars,name }) {
     let allStars = [1, 2, 3, 4, 5]
 
     return (
-        <p>
+        <p className="flex">
             {allStars.map((i)=>(
                 i <= stars ? <Star fill="gold" key={`star-${name}-${i}`}/> : <Star key={`empty-star-${name}-${i}`}/>
             ))}

@@ -1,7 +1,9 @@
 import Product from "./Product"
+/* import Age from "./product-parts/Age"
+import Height from "./product-parts/Height" */
+import Property from "./product-parts/Property"
 
-
-function ShoppingList({ filter, sorting, data, }) {
+function ShoppingList({ filter, sorting, data }) {
     // Pour travailler sur une copie, sinon pointe toujours sur la même référence. Seuls les types primitifs sont copiés par valeur
     let displayedProducts = [...data]
 
@@ -82,31 +84,34 @@ function ShoppingList({ filter, sorting, data, }) {
             displayedProducts = sortByEvaluation(displayedProducts)
     }
 
+    const properties = Object.getOwnPropertyNames(data[0].filters)
+
     return (
-        <main>
-            <h2 className="text-3xl text-center mb-12">Nourriture pour chien</h2>
-            <ul className="flex flex-wrap gap-10 justify-center">
-                {displayedProducts.length != 0 ? (
-                    displayedProducts.map((product, index) => (
-                        <Product
-                            name={product.name}
-                            id={product.id}
-                            height={product.height}
-                            age={product.age}
-                            cover={product.cover}
-                            isBestSale={product.isBestSale}
-                            price={product.price}
-                            stars={product.stars}
-                            key={`${product.name}-${index}`}
-                        />
-                    ))
-                ) : (
-                    <p>
-                        Pas de produit à afficher pour les filtres sélectionnés
-                    </p>
-                )}
-            </ul>
-        </main>
+        <ul className="flex flex-wrap gap-10 justify-center">
+            {displayedProducts.length != 0 ? (
+                displayedProducts.map((product, index) => (
+                    <Product
+                        name={product.name}
+                        id={product.id}
+                        height={product.height}
+                        age={product.age}
+                        cover={product.cover}
+                        isBestSale={product.isBestSale}
+                        price={product.price}
+                        stars={product.stars}
+                        key={`${product.name}-${index}`}
+                    >
+                        {
+                            properties.map((property, index) => (
+                                <Property property={property} value={product.filters[property]} key={`property-${index}`}/>
+                            ))
+                        }
+                    </ Product>
+                ))
+            ) : (
+                <p>Pas de produit à afficher pour les filtres sélectionnés</p>
+            )}
+        </ul>
     )
 }
 

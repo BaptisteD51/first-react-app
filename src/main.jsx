@@ -2,6 +2,7 @@ import "./index.css"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import Dogs from "./pages/Dogs.jsx"
+import Cats from "./pages/Cats.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { CartVisibilityProvider } from "./contexts/CartVisibility.jsx"
 import { CartContentProvider } from "./contexts/CartContent.jsx"
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/chien" element={<Dogs />} />
+                        <Route path="/chat" element={<Cats />} />
                     </Routes>
                     <Footer />
                     <Cart />
