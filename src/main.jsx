@@ -6,6 +6,7 @@ import Cats from "./pages/Cats.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { CartVisibilityProvider } from "./contexts/CartVisibility.jsx"
 import { CartContentProvider } from "./contexts/CartContent.jsx"
+import { FilterSortProvider } from "./contexts/FilterSort.jsx"
 import Header from "./components/Header.jsx"
 import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
@@ -19,8 +20,22 @@ createRoot(document.getElementById("root")).render(
                     <Header />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/chien" element={<Dogs />} />
-                        <Route path="/chat" element={<Cats />} />
+                        <Route
+                            path="/chien"
+                            element={
+                                <FilterSortProvider>
+                                    <Dogs />
+                                </FilterSortProvider>
+                            }
+                        />
+                        <Route 
+                            path="/chat"
+                            element={
+                                <FilterSortProvider>
+                                    <Cats />
+                                </FilterSortProvider>
+                            }
+                        />
                     </Routes>
                     <Footer />
                     <Cart />

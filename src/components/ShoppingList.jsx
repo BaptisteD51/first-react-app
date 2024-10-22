@@ -1,38 +1,35 @@
+import { useContext, useEffect } from "react"
 import Product from "./Product"
-/* import Age from "./product-parts/Age"
-import Height from "./product-parts/Height" */
 import Property from "./product-parts/Property"
+import { FilterSort } from "../contexts/FilterSort"
 
-function ShoppingList({ filter, sorting, data }) {
+function ShoppingList({ data }) {
     // Pour travailler sur une copie, sinon pointe toujours sur la même référence. Seuls les types primitifs sont copiés par valeur
     let displayedProducts = [...data]
 
     // Filter products
-    function filterProducts(products) {
-        if (filter.category != "all") {
-            products = products.filter(function (product) {
-                return product.category == filter.category
-            })
+    const { filter } = useContext(FilterSort)
+
+    function filterProducts(products, filter) {
+        if (filter == null) {
+            return products
         }
 
-        if (filter.age != "all") {
+        Object.entries(filter).forEach(function ([key, value]) {
             products = products.filter(function (product) {
-                return product.age == filter.age
+                return (product.filters[key] == value) | (value == "all")
             })
-        }
-
-        if (filter.height != "all") {
-            products = products.filter(function (product) {
-                return product.height == filter.height
-            })
-        }
+        })
 
         return products
     }
 
-    displayedProducts = filterProducts(displayedProducts)
+    displayedProducts = filterProducts(displayedProducts, filter)
 
     // Sort products
+
+    const { sorting } = useContext(FilterSort)
+
     function sortPriceAscending(products) {
         products.sort(function (a, b) {
             return a.price - b.price
@@ -69,7 +66,7 @@ function ShoppingList({ filter, sorting, data }) {
 
     switch (sorting) {
         case "none":
-            displayedProducts = filterProducts(data)
+            displayedProducts = filterProducts(data,filter)
             break
         case "price-ascending":
             displayedProducts = sortPriceAscending(displayedProducts)
@@ -101,12 +98,14 @@ function ShoppingList({ filter, sorting, data }) {
                         stars={product.stars}
                         key={`${product.name}-${index}`}
                     >
-                        {
-                            properties.map((property, index) => (
-                                <Property property={property} value={product.filters[property]} key={`property-${index}`}/>
-                            ))
-                        }
-                    </ Product>
+                        {properties.map((property, index) => (
+                            <Property
+                                property={property}
+                                value={product.filters[property]}
+                                key={`property-${index}`}
+                            />
+                        ))}
+                    </Product>
                 ))
             ) : (
                 <p>Pas de produit à afficher pour les filtres sélectionnés</p>

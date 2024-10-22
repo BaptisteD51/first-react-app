@@ -13,12 +13,7 @@ function Dogs() {
         `${protocol}//${hostName}/woufflenheim-api/?animal=dog`
     )
 
-    const [filter, updateFilter] = useState({
-        category: "all",
-        height: "all",
-        age: "all",
-    })
-    const [sorting, updateSorting] = useState("none")
+    
 
     if (error) {
         return <p>Erreur lors du chargement des données</p>
@@ -30,17 +25,11 @@ function Dogs() {
                 <ProductPageLayout
                     categories={
                         <Categories
-                            filter={filter}
-                            updateFilter={updateFilter}
-                            sorting={sorting}
-                            updateSorting={updateSorting}
                             data={data}
                         />
                     }
                     shoppingList={
                         <ShoppingList
-                            filter={filter}
-                            sorting={sorting}
                             data={data}
                         />
                     }

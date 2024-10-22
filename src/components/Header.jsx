@@ -30,7 +30,7 @@ function Header() {
                 <nav className="bg-gray-100 wrapper">
                     <ul className="flex">
                         <li>
-                            <Link to="/chien" className="text-red bg-blue-50">
+                            <Link to="/chien">
                                 <p className="p-4 hover:bg-gray-50">Chien</p>
                             </Link>
                         </li>

@@ -1,27 +1,30 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Sort from "./categories-parts/Sort"
 import Filter from "./categories-parts/Filter"
+import { FilterSort } from "../contexts/FilterSort"
 
-function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
+function Categories({ sorting, updateSorting, data }) {
+    const { updateFilter } = useContext(FilterSort)
+
     /**
-     * 
-     * @param {*} data 
+     *
+     * @param {*} data
      * @returns Object
-     * 
+     *
      * Return an object containing all the categories of products with their possible values
      */
-    function getCategories(data){
+    function getCategories(data) {
         const catNames = Object.getOwnPropertyNames(data[0].filters)
         let allCats = {}
-        
-        catNames.forEach((catName)=>{
+
+        catNames.forEach((catName) => {
             allCats[catName] = []
         })
 
-        data.forEach((product)=>{
+        data.forEach((product) => {
             let filters = product.filters
-            for(let key in filters){
-                if (!allCats[key].includes(filters[key])){
+            for (let key in filters) {
+                if (!allCats[key].includes(filters[key])) {
                     allCats[key].push(filters[key])
                 }
             }
@@ -29,19 +32,20 @@ function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
 
         return allCats
     }
-    
+
     let categories = getCategories(data)
 
     function selectFilters(e) {
         e.preventDefault()
         let data = new FormData(e.target)
-        updateFilter({
-            category: data.get("category"),
-            age: data.get("age"),
-            height: data.get("height"),
-        })
+        let newFilter = {}
+        for ( const key of data){
+            newFilter[key[0]] = key[1]
+        }
+        updateFilter(
+            newFilter
+        )
     }
-
 
     return (
         <aside className="categories">
@@ -90,13 +94,18 @@ function Categories({ filter, updateFilter, sorting, updateSorting, data }) {
                     />
                 </p>
             </form> */}
-            <form>
+            <form onSubmit={selectFilters}>
                 <h2>Filtrer</h2>
-                { Object.entries(categories).map(([key,value])=>(
-                <Filter catName={key} catValues={value} key={`category-${key}`}/>
-            )) }
+                {Object.entries(categories).map(([key, value]) => (
+                    <Filter
+                        catName={key}
+                        catValues={value}
+                        key={`category-${key}`}
+                    />
+                ))}
+                <input type="submit" value="Filtrer" className="button" />
             </form>
-            
+
             <Sort sorting={sorting} updateSorting={updateSorting} />
         </aside>
     )

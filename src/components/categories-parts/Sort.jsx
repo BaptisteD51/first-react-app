@@ -1,10 +1,15 @@
 import { Icon } from '@iconify/react';
+import { useContext } from 'react';
+import { FilterSort } from '../../contexts/FilterSort';
 
-function Sort({sorting,updateSorting}) {
+function Sort() {
+
+    const {updateSorting} = useContext(FilterSort)
+
     function selectSorting(e){
         updateSorting(e.target.value)
     }
-
+    
     return (
         <>
             <h2 className="sort-title"><span className="sorting-arrows"><Icon icon="mi:sort"/></span>Trier</h2>

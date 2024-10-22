@@ -7,7 +7,7 @@ function Filter({ catName, catValues }) {
             <select name={catName}>
                 <option value={"all"}>Tout</option>
                 {catValues.map((value,index)=>(
-                    <option key={`${value}-${index}`}> {translateTerm(value)}</option>
+                    <option key={`${value}-${index}`} value={value}> {translateTerm(value)}</option>
                 ))}
             </select>
         </p>
