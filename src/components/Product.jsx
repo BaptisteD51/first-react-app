@@ -2,8 +2,9 @@ import { useContext } from "react"
 import Stars from "./product-parts/Stars.jsx"
 import { ShoppingCart } from "react-feather"
 import { CartContent } from "../contexts/CartContent.jsx"
+import { Link } from "react-router-dom"
 
-function Product({ children, name, cover, id, isBestSale, price, stars }) {
+function Product({ children, name, cover, id, isBestSale, price, stars, animal }) {
     const { cart, updateCart, sortCart } = useContext(CartContent)
 
     function addToCart(name, price, cover) {
@@ -57,6 +58,7 @@ function Product({ children, name, cover, id, isBestSale, price, stars }) {
                     <span>&nbsp;Ajouter au panier</span>
                 </button>
             </p>
+            <p><Link to={`/${animal}/${id}`}>Lien</Link></p>
         </li>
     )
 }

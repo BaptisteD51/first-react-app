@@ -11,34 +11,26 @@ import Header from "./components/Header.jsx"
 import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
 import Cart from "./components/Cart.jsx"
+import Rodents from "./pages/Rodents.jsx"
+import ProductPage from "./pages/ProductPage.jsx"
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <Router>
             <CartContentProvider>
                 <CartVisibilityProvider>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route
-                            path="/chien"
-                            element={
-                                <FilterSortProvider>
-                                    <Dogs />
-                                </FilterSortProvider>
-                            }
-                        />
-                        <Route 
-                            path="/chat"
-                            element={
-                                <FilterSortProvider>
-                                    <Cats />
-                                </FilterSortProvider>
-                            }
-                        />
-                    </Routes>
-                    <Footer />
-                    <Cart />
+                    <FilterSortProvider>
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/chien" element={<Dogs />} />
+                            <Route path="/chat" element={<Cats />} />
+                            <Route path="/rongeur" element={<Rodents />} />
+                            <Route path="/:animal/:product" element={<ProductPage />} />
+                        </Routes>
+                        <Footer />
+                        <Cart />
+                    </FilterSortProvider>
                 </CartVisibilityProvider>
             </CartContentProvider>
         </Router>

@@ -14,6 +14,14 @@ function translateTerm(term){
         dry: "Croquette",
         wet: "Pâtée",
         snack: "Friandise",
+        category: "Type",
+        pellet: "Granulé",
+        hay: "Foin",
+        pet: "Animal",
+        guinea_pig: "Cochon d'Inde",
+        rat: "Rat 🐀",
+        hamster: "Hamster 🐹",
+        rabbit: "Lapin 🐇"
     }
 
     return translations[term] != undefined ? translations[term] : term 

@@ -3,10 +3,10 @@ import Product from "./Product"
 import Property from "./product-parts/Property"
 import { FilterSort } from "../contexts/FilterSort"
 
-function ShoppingList({ data }) {
+function ShoppingList({ data, animal }) {
     // Pour travailler sur une copie, sinon pointe toujours sur la même référence. Seuls les types primitifs sont copiés par valeur
     let displayedProducts = [...data]
-
+    
     // Filter products
     const { filter } = useContext(FilterSort)
 
@@ -97,6 +97,7 @@ function ShoppingList({ data }) {
                         price={product.price}
                         stars={product.stars}
                         key={`${product.name}-${index}`}
+                        animal = {animal}
                     >
                         {properties.map((property, index) => (
                             <Property

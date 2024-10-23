@@ -49,51 +49,6 @@ function Categories({ sorting, updateSorting, data }) {
 
     return (
         <aside className="categories">
-            {/* <form onSubmit={selectFilters}>
-                <h2 className="filter-title">
-                    <Filter />
-                    <span>Filtres</span>
-                </h2>
-                <p>
-                    Type :&nbsp;
-                    <select className="category-list" name="category">
-                        <option value={"all"}>Tout</option>
-                        {categories.map((category, index) => (
-                            <option key={category + index} value={category}>
-                                {category}
-                            </option>
-                        ))}
-                    </select>
-                </p>
-
-                <p>
-                    Âge :&nbsp;
-                    <select className="category-list" name="age">
-                        <option value="all">Tout</option>
-                        <option value="junior">Junior</option>
-                        <option value="adult">Adulte</option>
-                        <option value="senior">Senior</option>
-                    </select>
-                </p>
-
-                <p>
-                    Taille :&nbsp;
-                    <select className="category-list" name="height">
-                        <option value={"all"}>Tout</option>
-                        <option value={"small"}>Petit</option>
-                        <option value={"medium"}>Moyen</option>
-                        <option value={"big"}>Grand</option>
-                    </select>
-                </p>
-
-                <p>
-                    <input
-                        type="submit"
-                        value="Filtrer"
-                        className="cta-little"
-                    />
-                </p>
-            </form> */}
             <form onSubmit={selectFilters}>
                 <h2>Filtrer</h2>
                 {Object.entries(categories).map(([key, value]) => (

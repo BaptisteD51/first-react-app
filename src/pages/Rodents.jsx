@@ -6,14 +6,13 @@ import useFetch from "../hooks/useFetch.jsx"
 import ProductPageLayout from "../components/ProductPageLayout.jsx"
 import { FilterSort } from "../contexts/FilterSort"
 
-function Dogs() {
+function Rodents() {
     const hostName = window.location.hostname
     const protocol = window.location.protocol
-
-    const animal = "dog"
+    const animal = "rodent"
 
     const [data, dataLoaded, error] = useFetch(
-        `${protocol}//${hostName}/woufflenheim-api/?animal=dog`
+        `${protocol}//${hostName}/woufflenheim-api/?animal=rodent`
     )
 
     const {updateFilter,updateSorting} = useContext(FilterSort)
@@ -43,7 +42,7 @@ function Dogs() {
                             animal={animal}
                         />
                     }
-                    pageTitle={"Nourriture pour chien"}
+                    pageTitle={"Nourriture pour rongeurs"}
                 />
             ) : (
                 <p>Chargement des données</p>
@@ -52,4 +51,4 @@ function Dogs() {
     )
 }
 
-export default Dogs
+export default Rodents

@@ -2,7 +2,6 @@ import { Star } from "react-feather"
 
 function Stars({ stars,name }) {
     let allStars = [1, 2, 3, 4, 5]
-
     return (
         <p className="flex">
             {allStars.map((i)=>(
