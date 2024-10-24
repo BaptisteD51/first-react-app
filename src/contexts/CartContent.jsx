@@ -29,8 +29,42 @@ export const CartContentProvider = ({ children }) => {
         )
     }
 
+    /**
+     * To add a single product to the cart
+     * @param {string} name 
+     * @param {int} price 
+     * @param {string} cover cover img url 
+     * @param {int} quantity 
+     */
+    function addToCart(name, price, cover, quantity) {
+        let inCartProduct = cart.find((product) => product.name == name)
+        if (inCartProduct) {
+            let tab = cart.filter(function (product) {
+                return product.name != inCartProduct.name
+            })
+            updateCart(
+                sortCart([
+                    ...tab,
+                    {
+                        name: name,
+                        price: price,
+                        amount: inCartProduct.amount + quantity,
+                        cover: inCartProduct.cover,
+                    },
+                ])
+            )
+        } else {
+            updateCart(
+                sortCart([
+                    ...cart,
+                    { name: name, price: price, amount: quantity, cover: cover },
+                ])
+            )
+        }
+    }
+
     return (
-        <CartContent.Provider value={{ cart, updateCart, sortCart }}>
+        <CartContent.Provider value={{ cart, updateCart, sortCart, addToCart }}>
             {children}
         </CartContent.Provider>
     )

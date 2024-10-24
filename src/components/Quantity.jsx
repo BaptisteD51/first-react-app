@@ -10,7 +10,7 @@ function Quantity({amount,name,cart,updateCart}){
         let newCart = cart.filter((product)=>product.name != name)
         
         product.amount = product.amount + direction
-        product.amount < 1 ? product.amount = 1 : product.amount = product.amount
+        product.amount < 1 ? product.amount = 1 : product.amount
         updateCart(sortCart([...newCart, product])) 
     }
 

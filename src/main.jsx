@@ -12,7 +12,7 @@ import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
 import Cart from "./components/Cart.jsx"
 import Rodents from "./pages/Rodents.jsx"
-import ProductPage from "./pages/ProductPage.jsx"
+import SingleProduct from "./pages/SingleProduct.jsx"
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
@@ -26,7 +26,7 @@ createRoot(document.getElementById("root")).render(
                             <Route path="/chien" element={<Dogs />} />
                             <Route path="/chat" element={<Cats />} />
                             <Route path="/rongeur" element={<Rodents />} />
-                            <Route path="/:animal/:product" element={<ProductPage />} />
+                            <Route path="/:animal/:product" element={<SingleProduct />} />
                         </Routes>
                         <Footer />
                         <Cart />

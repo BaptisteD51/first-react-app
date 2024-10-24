@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
 import Property from "../components/product-parts/Property"
 import Stars from "../components/product-parts/Stars"
+import { useContext } from "react"
+import {CartContent} from "../contexts/CartContent"
+import { ShoppingCart } from "react-feather"
 
-function ProductPage() {
+function SingleProduct() {
     const { animal, product } = useParams()
 
     const hostName = window.location.hostname
@@ -12,7 +15,7 @@ function ProductPage() {
         `${protocol}//${hostName}/woufflenheim-api/?animal=${animal}&product=${product}`
     )
 
-    console.log(data)
+    const { addToCart } = useContext(CartContent)
 
     if (error) {
         return (
@@ -56,6 +59,12 @@ function ProductPage() {
                             )}
                         </p>
                         <Stars name={data.name} stars={data.stars}/>
+                        <button 
+                            className="button flex" 
+                            onClick={()=>addToCart(data.name, data.price, data.cover, 1)}
+                        >
+                            Ajouter au panier <ShoppingCart/>
+                        </button>
                     </div>
                 </main>
             ) : (
@@ -65,4 +74,4 @@ function ProductPage() {
     )
 }
 
-export default ProductPage
+export default SingleProduct
