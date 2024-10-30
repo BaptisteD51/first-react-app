@@ -1,11 +1,24 @@
 import { ShoppingCart } from "react-feather"
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 import { CartVisibility } from "../contexts/CartVisibility"
 import { Link } from "react-router-dom"
+import { CartContent } from "../contexts/CartContent"
 
 function Header() {
     const { toggleCartVisibility } = useContext(CartVisibility)
 
+    const { cart } = useContext(CartContent)
+
+    function cartTotalItems(cart){
+        let total = cart.reduce(function(acc,current){
+            return acc + current.amount
+        },0)
+        return total
+    }
+
+    const totalItems = useMemo(() => cartTotalItems(cart),[cart])
+
+    console.log(totalItems)
     return (
         <>
             <header className="bg-yellow-400">
@@ -17,10 +30,11 @@ function Header() {
                             </Link>
                         </p>
                         <button
-                            className="button"
+                            className="button relative"
                             onClick={toggleCartVisibility}
                         >
                             <ShoppingCart color="white" />
+                            <div className="absolute -bottom-2 -right-2 bg-orange-400 text-white text-sm px-[6px] rounded-full border-[2px] border-rose-950 font-bold">{totalItems}</div>
                         </button>
                     </section>
                 </div>

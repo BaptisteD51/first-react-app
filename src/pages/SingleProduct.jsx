@@ -63,7 +63,8 @@ function SingleProduct() {
                             className="button flex" 
                             onClick={()=>addToCart(data.name, data.price, data.cover, 1)}
                         >
-                            Ajouter au panier <ShoppingCart/>
+                            <ShoppingCart size={20} />
+                            <span>&nbsp;Ajouter au panier</span>
                         </button>
                     </div>
                 </main>
