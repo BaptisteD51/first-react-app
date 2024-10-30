@@ -18,7 +18,6 @@ function Header() {
 
     const totalItems = useMemo(() => cartTotalItems(cart),[cart])
 
-    console.log(totalItems)
     return (
         <>
             <header className="bg-yellow-400">

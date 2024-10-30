@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import ShoppingList from "../components/ShoppingList.jsx"
 import Categories from "../components/Categories.jsx"
-import "../assets/css/App.css"
 import useFetch from "../hooks/useFetch.jsx"
 import ProductPageLayout from "../components/ProductPageLayout.jsx"
 import { FilterSort } from "../contexts/FilterSort"

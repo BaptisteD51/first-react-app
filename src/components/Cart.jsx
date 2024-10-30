@@ -1,23 +1,18 @@
 import { useEffect, useContext, useState } from "react"
-import "../assets/css/Cart.css"
 import { X } from "react-feather"
 import Quantity from "./Quantity"
 import { CartVisibility } from "../contexts/CartVisibility"
 import { CartContent } from "../contexts/CartContent"
 
 function Cart() {
-
-    const {cartVisibility, toggleCartVisibility} = useContext(CartVisibility)
-    const {cart,updateCart} = useContext(CartContent)
-    
-
-    
+    const { cartVisibility, toggleCartVisibility } = useContext(CartVisibility)
+    const { cart, updateCart } = useContext(CartContent)
 
     /**
-     * 
-     * @param {*} array 
+     *
+     * @param {*} array
      * @returns {array}
-     * 
+     *
      * Sort the cart item so that they are always displayed in the same order after updateCart.
      * In descending order.
      */
@@ -27,8 +22,8 @@ function Cart() {
     }
 
     function totalCart() {
-        let total = cart.reduce(function (acc, plant) {
-            return acc + plant.price * plant.amount
+        let total = cart.reduce(function (acc, product) {
+            return acc + product.price * product.amount
         }, 0)
         return total
     }
@@ -36,8 +31,8 @@ function Cart() {
     const total = totalCart()
 
     function deleteProduct(name) {
-        let newCart = cart.filter(function (plant) {
-            return plant.name != name
+        let newCart = cart.filter(function (product) {
+            return product.name != name
         })
         updateCart(newCart)
     }
@@ -72,43 +67,46 @@ function Cart() {
     return (
         <>
             {
-                <div className="cart">
-                    <button
-                        className="x-mark"
-                        onClick={toggleCartVisibility}
-                    >
-                        <X color="white" />
-                    </button>
-                    <h2>Panier</h2>
+                <div className="cart fixed bg-yellow-400 inset-10 overflow-hidden rounded-3xl p-5">
+                    <div className="flex justify-between items-center mb-6">
+                        <h2 className="text-4xl font-bold">Panier</h2>
+                        <button
+                            className="button"
+                            onClick={toggleCartVisibility}
+                        >
+                            <X color="white" />
+                        </button>
+                    </div>
                     {cart.length != 0 ? (
-                        <ul>
-                            {cart.map((plant, index) => (
-                                <li key={plant.name + index}>
+                        <ul className="h-[75%] overflow-scroll">
+                            {cart.map((product, index) => (
+                                <li key={product.name + index} className="mb-8 max-w-96">
                                     <figure>
                                         <img
-                                            src={plant.cover}
-                                            alt={plant.name}
+                                            src={product.cover}
+                                            alt={product.name}
+                                            className="w-full max-w-96"
                                         />
                                     </figure>
                                     <div>
-                                        <h3>{plant.name}</h3>
-                                        <p>Prix : {plant.price} €</p>
+                                        <h3 className="text-2xl font-bold">{product.name}</h3>
+                                        <p>Prix : {product.price} €</p>
                                         <Quantity
-                                            amount={plant.amount}
-                                            name={plant.name}
+                                            amount={product.amount}
+                                            name={product.name}
                                             cart={cart}
                                             updateCart={updateCart}
                                         />
                                         <p>
                                             {" "}
                                             Sous-total ={" "}
-                                            {plant.amount * plant.price} €&nbsp;
+                                            {product.amount * product.price} €&nbsp;
                                         </p>
                                         <p>
                                             <button
                                                 className="discreet-button"
                                                 onClick={() =>
-                                                    deleteProduct(plant.name)
+                                                    deleteProduct(product.name)
                                                 }
                                             >
                                                 {" "}
