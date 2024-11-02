@@ -29,7 +29,7 @@ function Header() {
                             </Link>
                         </p>
                         <button
-                            className="button relative"
+                            className="button-big relative"
                             onClick={toggleCartVisibility}
                         >
                             <ShoppingCart color="white" />

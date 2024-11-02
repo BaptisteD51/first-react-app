@@ -35,7 +35,7 @@ function Product({
             {isBestSale ? <p className="popular">Meilleures ventes !</p> : null}
             <p>
                 <button
-                    className="button flex"
+                    className="button-small px-3 flex"
                     onClick={() => addToCart(name, price, cover, 1)}
                 >
                     <ShoppingCart size={20} />

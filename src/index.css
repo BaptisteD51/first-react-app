@@ -4,7 +4,15 @@
 
 @layer base {
     .button {
-        @apply bg-red-600 border-[3px] border-rose-900 p-3 rounded-full text-white;
+        @apply bg-red-600 border-[3px] border-rose-900 rounded-full text-white;
+    }
+
+    .button-small{
+        @apply button p-1;
+    }
+
+    .button-big{
+        @apply button p-3;
     }
 
     .wrapper {

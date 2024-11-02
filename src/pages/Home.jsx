@@ -5,11 +5,11 @@ import cat from "../assets/cat.jpg"
 
 function Home() {
     return (
-        <section className="wrapper">
-            <h1 className="product-page-title mt-10">
+        <main className="wrapper py-10">
+            <h1 className="product-page-title">
                 Woufflenheim : vente de nourriture pour animaux
             </h1>
-            <div className="flex justify-center gap-8 mb-14">
+            <div className="flex flex-wrap justify-center gap-8 mb-9">
                 <Link to="/chien">
                     <div className="shadow-md shadow-lg shadow-gray-500 rounded-3xl overflow-hidden">
                         <figure>
@@ -35,7 +35,7 @@ function Home() {
                     </div>
                 </Link>
             </div>
-        </section>
+        </main>
     )
 }
 

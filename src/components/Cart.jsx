@@ -44,13 +44,13 @@ function Cart() {
 
     useEffect(() => {
         const visible = cartVisibility
-        let elmts = document.querySelectorAll("header, aside, main, footer")
+        let elmts = document.querySelectorAll("header, nav, aside, main, footer")
         if (visible) {
             elmts.forEach((elmt) => elmt.classList.add("blur"))
-            document.body.classList.add("no-scroll")
+            document.body.classList.add("overflow-y-hidden")
         } else {
             elmts.forEach((elmt) => elmt.classList.remove("blur"))
-            document.body.classList.remove("no-scroll")
+            document.body.classList.remove("overflow-y-hidden")
         }
     }, [cartVisibility])
 
@@ -67,29 +67,34 @@ function Cart() {
     return (
         <>
             {
-                <div className="cart fixed bg-yellow-400 inset-10 overflow-hidden rounded-3xl p-5">
+                <div className="fixed bg-yellow-400 top-10 bottom-10 left-1/2 -translate-x-1/2 overflow-hidden rounded-3xl p-5 z-0 max-w-[90vw] shadow-lg shadow-gray-500">
                     <div className="flex justify-between items-center mb-6">
                         <h2 className="text-4xl font-bold">Panier</h2>
                         <button
-                            className="button"
+                            className="button-small"
                             onClick={toggleCartVisibility}
                         >
                             <X color="white" />
                         </button>
                     </div>
                     {cart.length != 0 ? (
-                        <ul className="h-[75%] overflow-scroll">
+                        <ul className="h-[82.5%] overflow-y-scroll">
                             {cart.map((product, index) => (
-                                <li key={product.name + index} className="mb-8 max-w-96">
+                                <li
+                                    key={product.name + index}
+                                    className="mb-8 bg-white p-4 flex flex-wrap gap-3"
+                                >
                                     <figure>
                                         <img
                                             src={product.cover}
                                             alt={product.name}
-                                            className="w-full max-w-96"
+                                            className="w-96"
                                         />
                                     </figure>
                                     <div>
-                                        <h3 className="text-2xl font-bold">{product.name}</h3>
+                                        <h3 className="text-2xl font-bold">
+                                            {product.name}
+                                        </h3>
                                         <p>Prix : {product.price} €</p>
                                         <Quantity
                                             amount={product.amount}
@@ -98,19 +103,18 @@ function Cart() {
                                             updateCart={updateCart}
                                         />
                                         <p>
-                                            {" "}
-                                            Sous-total ={" "}
-                                            {product.amount * product.price} €&nbsp;
+                                            Sous-total =
+                                            {product.amount * product.price}
+                                            €&nbsp;
                                         </p>
                                         <p>
                                             <button
-                                                className="discreet-button"
+                                                className="underline text-red-700 font-bold"
                                                 onClick={() =>
                                                     deleteProduct(product.name)
                                                 }
                                             >
-                                                {" "}
-                                                Supprimer{" "}
+                                                Supprimer
                                             </button>
                                         </p>
                                     </div>
@@ -123,18 +127,20 @@ function Cart() {
                         </ul>
                     )}
 
-                    <div className="total-order">
+                    <div className="flex flex-wrap justify-between items-center pt-1">
                         <div>
-                            <p className="total-cart"> Total : {total} €</p>
+                            <p className="text-bold text-xl font-bold">
+                                Total : {total} €
+                            </p>
                             <button
                                 onClick={resetCart}
-                                className="discreet-button"
+                                className="underline text-red-700 font-bold"
                             >
                                 Vider le Panier
                             </button>
                         </div>
 
-                        <button className="cta" onClick={alertOrder}>
+                        <button className="button-big" onClick={alertOrder}>
                             Commander
                         </button>
                     </div>
