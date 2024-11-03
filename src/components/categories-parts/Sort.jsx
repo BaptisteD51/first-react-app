@@ -1,18 +1,20 @@
-import { Icon } from '@iconify/react';
-import { useContext } from 'react';
-import { FilterSort } from '../../contexts/FilterSort';
+import { Icon } from "@iconify/react"
+import { useContext } from "react"
+import { FilterSort } from "../../contexts/FilterSort"
 
 function Sort() {
+    const { updateSorting } = useContext(FilterSort)
 
-    const {updateSorting} = useContext(FilterSort)
-
-    function selectSorting(e){
+    function selectSorting(e) {
         updateSorting(e.target.value)
     }
-    
+
     return (
         <>
-            <h2 className="sort-title"><span className="sorting-arrows"><Icon icon="mi:sort"/></span>Trier</h2>
+            <h2 className="font-bold text-lg mt-6 flex items-center gap-1">
+                <Icon icon="mi:sort" />
+                Trier
+            </h2>
             <select onChange={selectSorting}>
                 <option value="none">Pas de tri</option>
                 <option value="price-ascending">Prix croissant</option>
@@ -22,7 +24,6 @@ function Sort() {
             </select>
         </>
     )
-
 }
 
 export default Sort

@@ -2,9 +2,10 @@ import { useState, useEffect, useContext } from "react"
 import Sort from "./categories-parts/Sort"
 import Filter from "./categories-parts/Filter"
 import { FilterSort } from "../contexts/FilterSort"
+import { Icon } from "@iconify/react/dist/iconify.js"
 
 function Categories({ sorting, updateSorting, data }) {
-    const { updateFilter } = useContext(FilterSort)
+    const { updateFilter,filter } = useContext(FilterSort)
 
     /**
      *
@@ -39,30 +40,37 @@ function Categories({ sorting, updateSorting, data }) {
         e.preventDefault()
         let data = new FormData(e.target)
         let newFilter = {}
-        for ( const key of data){
+        for (const key of data) {
             newFilter[key[0]] = key[1]
         }
-        updateFilter(
-            newFilter
-        )
+        updateFilter(newFilter)
     }
 
     return (
-        <aside className="categories">
+        <>
             <form onSubmit={selectFilters}>
-                <h2>Filtrer</h2>
-                {Object.entries(categories).map(([key, value]) => (
-                    <Filter
-                        catName={key}
-                        catValues={value}
-                        key={`category-${key}`}
-                    />
-                ))}
-                <input type="submit" value="Filtrer" className="button" />
+                <h2 className="font-bold text-lg flex items-center">
+                    <Icon icon="mdi:filter-outline" />
+                    &nbsp;Filtrer
+                </h2>
+                <div className="flex flex-col items-start gap-1">
+                    {Object.entries(categories).map(([key, value]) => (
+                        <Filter
+                            catName={key}
+                            catValues={value}
+                            key={`category-${key}`}
+                        />
+                    ))}
+                </div>
+                <input
+                    type="submit"
+                    value="Filtrer"
+                    className="button-small px-3 cursor-pointer mt-1"
+                />
             </form>
 
             <Sort sorting={sorting} updateSorting={updateSorting} />
-        </aside>
+        </>
     )
 }
 

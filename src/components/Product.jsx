@@ -22,17 +22,17 @@ function Product({
             className="max-w-56 shadow-lg shadow-gray-500 p-4 rounded-2xl"
         >
             <Link to={`/${animal}/${id}`}>
-                <figure>
+                <figure className="relative">
                     <img src={cover} alt={name} />
+                    {isBestSale ? <p className="font-bold text-red-700 bg-yellow-400/60 absolute top-0 right-0 px-1">Meilleures ventes !</p> : null}
                 </figure>
-                <h2 className="font-bold">{name.toUpperCase()}</h2>
+                <h2 className="font-bold text-xl">{name.toUpperCase()}</h2>
             </Link>
             <p>
                 <strong>{price} €</strong>
             </p>
             {children}
             <Stars stars={stars} name={name} />
-            {isBestSale ? <p className="popular">Meilleures ventes !</p> : null}
             <p>
                 <button
                     className="button-small px-3 flex"

@@ -1,6 +1,6 @@
 import {Minus, Plus } from "react-feather"
 import { useContext } from "react"
-import { CartContent } from "../contexts/CartContent"
+import { CartContent } from "../../contexts/CartContent"
 
 function Quantity({amount,name,cart,updateCart}){
     const { sortCart } = useContext(CartContent)
@@ -17,9 +17,9 @@ function Quantity({amount,name,cart,updateCart}){
     return (
         <p>
             Quantité =&nbsp;
-            <button onClick={()=>changeAmount(amount,name,-1)}><Minus size={10} /></button>
+            <button onClick={()=>changeAmount(amount,name,-1)} className="bg-slate-200 p-2 border-[2px] border-slate-500 rounded-md"><Minus size={10}/></button>
             <strong> {amount} </strong>
-            <button onClick={()=>changeAmount(amount,name,1)}><Plus size={10}  /></button>
+            <button onClick={()=>changeAmount(amount,name,1)} className="bg-slate-200 p-2 border-[2px] border-slate-500 rounded-md"><Plus size={10}  /></button>
         </p>
     )
 }

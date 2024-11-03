@@ -23,7 +23,7 @@ function Header() {
             <header className="bg-yellow-400">
                 <div className="wrapper">
                     <section className="flex justify-between items-center py-4">
-                        <p className="text-2xl">
+                        <p className="text-2xl font-bold font">
                             <Link to="/">
                                 Woufflenheim : véritable croquette alsacienne 🐕
                             </Link>

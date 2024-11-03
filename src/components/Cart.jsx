@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from "react"
 import { X } from "react-feather"
-import Quantity from "./Quantity"
+import Quantity from "./cart-parts/Quantity"
 import { CartVisibility } from "../contexts/CartVisibility"
 import { CartContent } from "../contexts/CartContent"
 
@@ -44,7 +44,9 @@ function Cart() {
 
     useEffect(() => {
         const visible = cartVisibility
-        let elmts = document.querySelectorAll("header, nav, aside, main, footer")
+        let elmts = document.querySelectorAll(
+            "header, nav, aside, main, footer"
+        )
         if (visible) {
             elmts.forEach((elmt) => elmt.classList.add("blur"))
             document.body.classList.add("overflow-y-hidden")
@@ -67,7 +69,7 @@ function Cart() {
     return (
         <>
             {
-                <div className="fixed bg-yellow-400 top-10 bottom-10 left-1/2 -translate-x-1/2 overflow-hidden rounded-3xl p-5 z-0 max-w-[90vw] shadow-lg shadow-gray-500">
+                <div className="fixed bg-yellow-400 top-10 bottom-10 left-1/2 -translate-x-1/2 overflow-hidden rounded-3xl p-5 z-0 max-w-[90vw] shadow-lg shadow-gray-500 w-[600px]">
                     <div className="flex justify-between items-center mb-6">
                         <h2 className="text-4xl font-bold">Panier</h2>
                         <button
@@ -103,9 +105,9 @@ function Cart() {
                                             updateCart={updateCart}
                                         />
                                         <p>
-                                            Sous-total =
+                                            Sous-total =&nbsp;
                                             {product.amount * product.price}
-                                            €&nbsp;
+                                            &nbsp;€
                                         </p>
                                         <p>
                                             <button
