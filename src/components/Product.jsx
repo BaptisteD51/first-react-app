@@ -1,7 +1,9 @@
 import { useContext } from "react"
 import Stars from "./product-parts/Stars.jsx"
 import { ShoppingCart } from "react-feather"
+import { Icon } from "@iconify/react/dist/iconify.js"
 import { CartContent } from "../contexts/CartContent.jsx"
+import { CartConfirmation } from "../contexts/CartConfirmation.jsx"
 import { Link } from "react-router-dom"
 
 function Product({
@@ -15,6 +17,7 @@ function Product({
     animal,
 }) {
     const { addToCart } = useContext(CartContent)
+    const { updateAddedProduct } = useContext(CartConfirmation)
 
     return (
         <li
@@ -24,7 +27,11 @@ function Product({
             <Link to={`/${animal}/${id}`}>
                 <figure className="relative">
                     <img src={cover} alt={name} />
-                    {isBestSale ? <p className="font-bold text-red-700 bg-yellow-400/60 absolute top-0 right-0 px-1">Meilleures ventes !</p> : null}
+                    {isBestSale ? (
+                        <p className="font-bold text-red-700 bg-yellow-400/60 absolute top-0 right-0 px-1">
+                            Meilleures ventes !
+                        </p>
+                    ) : null}
                 </figure>
                 <h2 className="font-bold text-xl">{name.toUpperCase()}</h2>
             </Link>
@@ -36,10 +43,18 @@ function Product({
             <p>
                 <button
                     className="button-small px-3 flex"
-                    onClick={() => addToCart(name, price, cover, 1)}
+                    onClick={() => {
+                        addToCart(name, price, cover, 1)
+                        updateAddedProduct({
+                            name: name,
+                            price: price,
+                            cover: cover,
+                            quantity: 1,
+                        })
+                    }}
                 >
                     <ShoppingCart size={20} />
-                    <span>&nbsp;Ajouter au panier</span>
+                    <Icon icon="ic:baseline-plus" />
                 </button>
             </p>
         </li>

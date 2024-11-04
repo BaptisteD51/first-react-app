@@ -2,9 +2,11 @@ import { useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
 import Property from "../components/product-parts/Property"
 import Stars from "../components/product-parts/Stars"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartContent } from "../contexts/CartContent"
+import { CartConfirmation } from "../contexts/CartConfirmation"
 import { ShoppingCart } from "react-feather"
+import { Minus, Plus } from "react-feather"
 
 function SingleProduct() {
     const { animal, product } = useParams()
@@ -15,7 +17,11 @@ function SingleProduct() {
         `${protocol}//${hostName}/woufflenheim-api/?animal=${animal}&product=${product}`
     )
 
+    // To change the amount of products to add to cart
+    const [quantity, updateQuantity] = useState(1)
+
     const { addToCart } = useContext(CartContent)
+    const { updateAddedProduct } = useContext(CartConfirmation)
 
     if (error) {
         return (
@@ -55,15 +61,49 @@ function SingleProduct() {
                             )}
                         </div>
                         <Stars name={data.name} stars={data.stars} />
-                        <button
-                            className="button-small px-3 flex mt-2"
-                            onClick={() =>
-                                addToCart(data.name, data.price, data.cover, 1)
-                            }
-                        >
-                            <ShoppingCart size={20} />
-                            <span>&nbsp;Ajouter au panier</span>
-                        </button>
+
+                        <div className="flex items-center gap-4 mt-4">
+                            <div className="flex items-center gap-1">
+                                <button
+                                    onClick={() =>
+                                        updateQuantity(
+                                            quantity > 1 ? quantity - 1 : 1
+                                        )
+                                    }
+                                    className="bg-slate-200 p-2 border-[2px] border-slate-500 rounded-md"
+                                >
+                                    <Minus size={10} />
+                                </button>
+                                <div className="font-bold">{quantity}</div>
+                                <button
+                                    onClick={() => updateQuantity(quantity + 1)}
+                                    className="bg-slate-200 p-2 border-[2px] border-slate-500 rounded-md"
+                                >
+                                    <Plus size={10} />
+                                </button>
+                            </div>
+
+                            <button
+                                className="button-small px-3 flex"
+                                onClick={() => {
+                                    addToCart(
+                                        data.name,
+                                        data.price,
+                                        data.cover,
+                                        quantity
+                                    )
+                                    updateAddedProduct({
+                                        name: data.name,
+                                        price: data.price,
+                                        cover: data.cover,
+                                        quantity: quantity,
+                                    })
+                                }}
+                            >
+                                <ShoppingCart size={20} />
+                                <span>&nbsp;Ajouter au panier</span>
+                            </button>
+                        </div>
                     </div>
                 </main>
             ) : (

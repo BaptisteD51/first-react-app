@@ -12,8 +12,6 @@ function Filter({ catName, catValues }) {
         updateFilter(newFilter)
     }
 
-    console.log(filter)
-
     if (!filter) {
         return (
             <div className="mb-1 order-1">
