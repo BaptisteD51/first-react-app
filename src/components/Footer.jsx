@@ -8,7 +8,7 @@ function Footer() {
     }
 
     return (
-        <footer className="bg-red-600 text-white py-10">
+        <footer className="bg-red-600 text-white py-10 max-md:mb-16">
             <div className="footer-container wrapper">
                 <p>© Woufflenheim {theYear()} - tous droits réservés </p>
                 <p className="description">

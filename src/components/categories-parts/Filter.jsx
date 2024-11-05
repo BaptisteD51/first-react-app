@@ -39,9 +39,9 @@ function Filter({ catName, catValues }) {
                     </div>
                 ) : null}
 
-                <div className="mb-1 order-1">
-                    {translateTerm(catName)} :&nbsp;
-                    <select name={catName}>
+                <div className="mb-1 order-1 max-md:flex max-md:w-full max-md:items-center">
+                    <span className="max-md:text-lg">{translateTerm(catName)} :&nbsp;</span>
+                    <select name={catName} className="flex-1 max-md:p-3 max-md:rounded-2xl max-md:my-1">
                         <option value={"all"}>Tout</option>
                         {catValues.map((value, index) => (
                             <option key={`${value}-${index}`} value={value} selected={filter[catName] == value }>

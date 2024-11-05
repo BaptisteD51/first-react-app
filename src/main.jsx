@@ -36,7 +36,7 @@ createRoot(document.getElementById("root")).render(
                             </Routes>
                             <Footer />
                             <Cart />
-                            <Confirmation/>
+                            <Confirmation />
                         </FilterSortProvider>
                     </CartConfirmationProvider>
                 </CartVisibilityProvider>
