@@ -37,7 +37,7 @@ function SingleProduct() {
             {dataLoaded ? (
                 <main className="wrapper flex flex-wrap gap-4 py-10">
                     <figure className="max-w-[400px] w-full relative">
-                        <img src={data.cover} alt={data.name} />
+                        <img src={data.cover} alt={data.name} className="w-full"/>
                         {data.isBestSale ? (
                             <p className="font-bold text-red-700 bg-yellow-400/60 absolute top-0 right-0 px-1">
                                 Meilleures ventes !
