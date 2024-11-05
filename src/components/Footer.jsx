@@ -12,10 +12,10 @@ function Footer() {
             <div className="footer-container wrapper">
                 <p>© Woufflenheim {theYear()} - tous droits réservés </p>
                 <p className="description">
-                    <HelpCircle size={14} class="inline"/> Ce site est un site de démonstration réalisé en ReactJS, vous pouvez 
+                    <HelpCircle size={14} className="inline"/> Ce site est un site de démonstration réalisé en ReactJS, vous pouvez 
                     consulter le code source ici :&nbsp;
                         <a href="https://github.com/BaptisteD51/first-react-app" className="underline">
-                            <GitHub size={14} class="inline"/> Dépôt GitHub
+                            <GitHub size={14} className="inline"/> Dépôt GitHub
                         </a>
                 </p>
             </div>
